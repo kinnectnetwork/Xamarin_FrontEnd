@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:Kinnect_New.Controls"
+             x:Class="Kinnect_New.Controls.ExampleViewControl">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseLabelStyle" TargetType="control:MyLabel">
+                <Setter Property="FontFamily" Value="{StaticResource Lato-RegularFont}"/>
+            </Style>
+
+            <Style x:Key="MainLabelStyle" TargetType="control:MyLabel" BaseResourceKey="BaseLabelStyle">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSizeFactor" Value="0.8"/>
+                <Setter Property="Margin" Value="0,0,0,0"/>
+            </Style>
+
+            <Style x:Key="AttributeLabelStyle" TargetType="control:MyLabel" BaseResourceKey="BaseLabelStyle">
+                <Setter Property="TextColor" Value="#275657"/>
+                <Setter Property="Margin" Value="15,10,10,0"/>
+                <Setter Property="NamedFontSize" Value="Small"/>
+                <Setter Property="FontSizeFactor" Value="0.75"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+
+            <Style x:Key="ValueLabelStyle" TargetType="control:MyLabel" BaseResourceKey="BaseLabelStyle">
+                <Setter Property="TextColor" Value="#717171"/>
+                <Setter Property="Margin" Value="15,10,10,0"/>
+                <Setter Property="NamedFontSize" Value="Small"/>
+                <Setter Property="FontSizeFactor" Value="0.75"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ScrollView Orientation="Vertical">
+
+        <RelativeLayout>
+
+            <Image x:Name="profileImage" Source="http://placehold.it/400x400"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.075}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.85}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.85}"                
+                    Aspect="AspectFill"/>
+
+            <Grid
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileImage,Property=Height, Factor=1}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.075}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.85}"
+                RowSpacing="0" ColumnSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Main Description (Left Side)-->
+                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="0" Padding="5"
+                         VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"                         
+                         BackgroundColor="#2C6385">
+
+                    <!--The padding fixes the thickness-->
+                    <Frame Padding="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand"
+                       BackgroundColor="White" >
+
+                        <!--The padding has to be 0, otherwise default to 20-->
+                        <Frame Padding="0"
+                       BackgroundColor="#2C6385">
+                            <StackLayout Spacing="-2" Padding="7,2,7,2">
+                                <control:MyLabel x:Name="ScoreValue" Text="90%"
+                                             Style="{StaticResource BaseLabelStyle}" FontSizeFactor="0.8"
+                                             HorizontalTextAlignment="Center"
+                                             TextColor="White" />
+                                <control:MyLabel Text="match"
+                                             Style="{StaticResource BaseLabelStyle}" FontSizeFactor="0.55"
+                                             HorizontalTextAlignment="Center"
+                                             TextColor="White"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                </StackLayout>
+
+                <!--Main Description (Right Side)-->
+                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="0" Padding="5"
+                         VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"                         
+                         BackgroundColor="#2C6385">
+                    <control:MyLabel x:Name="FullNameValue" Text="Name1" Style="{StaticResource MainLabelStyle}" VerticalOptions="EndAndExpand"/>
+                    <control:MyLabel x:Name="JobTitleValue" Text="Title1" Style="{StaticResource MainLabelStyle}" VerticalOptions="StartAndExpand"/>
+                </StackLayout>
+
+                <!--FieldName-->
+                <control:MyLabel Grid.Row="1" Grid.Column="0" Style="{StaticResource AttributeLabelStyle}" Text="Location" />
+                <control:MyLabel Grid.Row="2" Grid.Column="0" Style="{StaticResource AttributeLabelStyle}" Text="Industry" />
+                <control:MyLabel Grid.Row="3" Grid.Column="0" Style="{StaticResource AttributeLabelStyle}" Text="Focus Area" />
+                <control:MyLabel Grid.Row="4" Grid.Column="0" Style="{StaticResource AttributeLabelStyle}" Text="Organisation" />
+                <control:MyLabel Grid.Row="5" Grid.Column="0" Style="{StaticResource AttributeLabelStyle}" Text="Currently&#x0a;works in" />
+                <control:MyLabel Grid.Row="6" Grid.Column="0" Style="{StaticResource AttributeLabelStyle}" Text="Have&#x0a;worked in" />
+                <control:MyLabel Grid.Row="7" Grid.Column="0" Style="{StaticResource AttributeLabelStyle}" Text="Professional&#x0a;Interests" />
+                <control:MyLabel Grid.Row="8" Grid.Column="0" Style="{StaticResource AttributeLabelStyle}" Text="" />
+
+                <!--Value-->
+                <control:MyLabel x:Name="LocationValue" Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelStyle}" Text="Placeholder1" />
+                <control:MyLabel x:Name="IndustryValue" Grid.Row="2" Grid.Column="1" Style="{StaticResource ValueLabelStyle}" Text="Placeholder2" />
+                <control:MyLabel x:Name="FocusAreaValue" Grid.Row="3" Grid.Column="1" Style="{StaticResource ValueLabelStyle}" Text="Placeholder3" />
+                <control:MyLabel x:Name="OrganisationValue" Grid.Row="4" Grid.Column="1" Style="{StaticResource ValueLabelStyle}" Text="Placeholder4" />
+                <control:MyLabel x:Name="CurrentEmployerValue" Grid.Row="5" Grid.Column="1" Style="{StaticResource ValueLabelStyle}" Text="Placeholder5" />
+                <control:MyLabel x:Name="OverseasExperienceValue" Grid.Row="6" Grid.Column="1" Style="{StaticResource ValueLabelStyle}" Text="Placeholder6" />
+                <control:MyLabel x:Name="ProfessionalInterestsValue" Grid.Row="7" Grid.Column="1" Style="{StaticResource ValueLabelStyle}" Text="Placeholder7" />
+                <control:MyLabel x:Name="EmptyValue" Grid.Row="8" Grid.Column="1" Style="{StaticResource AttributeLabelStyle}" Text="" />
+
+            </Grid>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</ContentView>

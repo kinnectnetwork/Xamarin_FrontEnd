@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Kinnect_New"
+             xmlns:control="clr-namespace:Kinnect_New.Controls"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="Kinnect_New.MainPage"
+             x:Name="MainPage">
+
+    <cv:CarouselViewControl x:Name="MainCarouselView"
+                            Orientation="Horizontal"
+                            IsSwipeEnabled="True"
+                            ShowArrows="True">
+
+        <cv:CarouselViewControl.ItemTemplate>
+            <DataTemplate>
+                <ScrollView>
+
+                    <control:ExampleViewControl 
+                        FullName="{Binding Name}"
+                        JobTitle="{Binding PositionTitle}"
+                        Score="{Binding TotalScore}"
+                        Location="{Binding Location}"
+                        Industry="{Binding Industry}"
+                        Organisation="{Binding OrganisationType}"
+                        FocusArea="{Binding FocusArea}"
+                        CurrentEmployer="{Binding OrganisationName}"
+                        OverseasExperience="{Binding OverseasExperience}"
+                        ProfessionalInterests="{Binding ProfessionalInterests}"
+                        />
+
+                    <!--<AbsoluteLayout>
+                        <StackLayout                                  
+                            AbsoluteLayout.LayoutBounds="0.5,0.5,0.85,1"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional">
+
+                            <BoxView Color="{Binding Box1Color}"
+                                     HeightRequest="700" />
+                            <BoxView Color="{Binding Box2Color}"
+                                     HeightRequest="700" />
+                            
+                        </StackLayout>
+
+                    </AbsoluteLayout>-->
+
+                </ScrollView>
+
+            </DataTemplate>
+        </cv:CarouselViewControl.ItemTemplate>
+    </cv:CarouselViewControl>
+
+</ContentPage>

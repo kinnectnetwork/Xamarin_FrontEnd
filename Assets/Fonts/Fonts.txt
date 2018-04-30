@@ -1,0 +1,38 @@
+https://codemilltech.com/fantastic-fonts-in-xamarin-forms/
+
+IoS
+1) Put into Resources
+2) Include in Porject, Property change to Always Copy
+3) Add to info.plist
+
+<key>UIAppFonts</key>
+	
+<array>
+
+	<string>OpenSans-Regular.ttf</string>
+
+	<string>Bitter-Regular.ttf</string>
+
+	<string>Lato-Regular.ttf</string>
+</array>
+
+
+Android
+1) Put into assets
+2) Include in Porject, Property change to Always Copy
+
+
+Common
+Go to resource dictionary, add the following
+
+<ResourceDictionary>
+    <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+        <On Platform="Android" Value="OpenSans-Bold.ttf#Open Sans" />
+        <On Platform="iOS" Value="OpenSans-Bold" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+        <On Platform="Android" Value="OpenSans-Regular.ttf#Open Sans" />
+        <On Platform="iOS" Value="OpenSans-Regular" />
+    </OnPlatform>
+</ResourceDictionary>
+
